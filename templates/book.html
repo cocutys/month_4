@@ -6,11 +6,12 @@
 </head>
 <body>
 <center>
-    {% for i in book %}
+    {% for i in book_object %}
         <h1>{{ i.title }}</h1>
     <img src="{{i.image.url}}" alt="" width="200" height="200">
     <p>{{ i.description }}</p>
     <p>{{ i.created_date }}</p>
+    <p>{{i.update_date}}</p>
     {% endfor %}
 </center>
 
