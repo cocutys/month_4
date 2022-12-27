@@ -18,3 +18,8 @@ class Book(models.Model):
     updated_date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.title
+
+class CommentBook(models.Model):
+    choice_book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comment_object')
+    text = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
