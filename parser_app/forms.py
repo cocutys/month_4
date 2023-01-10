@@ -2,14 +2,12 @@ from django import forms
 from . import models, parser
 
 class ParserForm(forms.Form):
-    MEDIA_CHOISES = (
-        ('BOOKS', "BOOKS"),
-    )
+    MEDIA_CHOISES = (("BOOKS", "BOOKS"),)
     media_type = forms.ChoiceField(choices=MEDIA_CHOISES)
 
     class Meta:
         fields = [
-            'media_type',
+            "media_type",
         ]
 
     def parser_data(self):

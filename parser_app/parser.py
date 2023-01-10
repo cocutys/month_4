@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup as BS
 from django.views.decorators.csrf import csrf_exempt
 
-URL = "https://mybook.ru/"
+URL = "https://litnet.com/"
 
 HEADERS = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -17,15 +17,15 @@ def get_html(url, params=''):
 @csrf_exempt
 def get_data(html):
     soup = BS(html, 'html.parser')
-    items = soup.find_all('div', class_='e4xwgl-0 iJwsmp')
+    items = soup.find_all('div', class_='row book-item')
     mybook = []
 
     for item in items:
         mybook.append(
             {
                 'title': URL + item.find("a").get('href'),
-                'title_text': item.find('div', class_='e4xwgl-1 gEQwGK').get_text(),
-                'image': URL + item.find('div', class_='sc-13ocwik-0 idoTYd').find('img').get('src')
+                'title_text': item.find('h4', class_='book-title').get_text(),
+                'image': URL + item.find('div', class_='book-img').find('img').get('src'),
             }
         )
     return mybook
@@ -37,7 +37,7 @@ def parser():
     if html.status_code == 200:
         mybook1 = []
         for page in range(0, 1):
-            html = get_html(f'https://mybook.ru/catalog/books/', params=page)
+            html = get_html(f'https://litnet.com/ru/top/all', params=page)
             mybook1.extend(get_data(html.text))
         return mybook1
     else:
