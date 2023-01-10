@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Retro clothes</title>
+</head>
+<body>
+{% for i in object_list %}
+<h1>Название: {{ i.name }}</h1>
+    <p>Цена: {{ i.price }}</p>
+    <p>{{ i.description }}</p>
+    <p></p>
+{% endfor %}
+</body>
+</html>

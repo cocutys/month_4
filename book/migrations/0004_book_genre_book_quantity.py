@@ -6,18 +6,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('book', '0003_rename_create_date_book_created_date'),
+        ("book", "0003_rename_create_date_book_created_date"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='book',
-            name='genre',
-            field=models.CharField(choices=[('Detective', 'Detective'), ('Horror', 'Horror'), ('Anime', 'Anime'), ('Comedy', 'Comedy'), ('Document', 'Document'), ('Fantasy', 'Fantasy')], max_length=100, null=True),
+            model_name="book",
+            name="genre",
+            field=models.CharField(
+                choices=[
+                    ("Detective", "Detective"),
+                    ("Horror", "Horror"),
+                    ("Anime", "Anime"),
+                    ("Comedy", "Comedy"),
+                    ("Document", "Document"),
+                    ("Fantasy", "Fantasy"),
+                ],
+                max_length=100,
+                null=True,
+            ),
         ),
         migrations.AddField(
-            model_name='book',
-            name='quantity',
+            model_name="book",
+            name="quantity",
             field=models.PositiveIntegerField(null=True),
         ),
     ]

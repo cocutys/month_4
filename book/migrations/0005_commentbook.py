@@ -7,17 +7,32 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('book', '0004_book_genre_book_quantity'),
+        ("book", "0004_book_genre_book_quantity"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CommentBook',
+            name="CommentBook",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.TextField()),
-                ('created_date', models.DateTimeField(auto_now_add=True)),
-                ('choice_book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comment_object', to='book.book')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("text", models.TextField()),
+                ("created_date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "choice_book",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="comment_object",
+                        to="book.book",
+                    ),
+                ),
             ],
         ),
     ]
